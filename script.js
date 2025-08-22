@@ -1,50 +1,35 @@
-// Add interactive hover effects and smooth animations
 document.addEventListener("DOMContentLoaded", () => {
-  const asteroids = document.querySelectorAll(".asteroid")
+  const logo = document.getElementById("logo")
+  let mouseX = 0
+  let mouseY = 0
 
-  // Add subtle mouse interaction with asteroids
-  asteroids.forEach((asteroid) => {
-    asteroid.addEventListener("mouseenter", function () {
-      this.style.animationPlayState = "paused"
-    })
+  // Mouse parallax effect
+  document.addEventListener("mousemove", (e) => {
+    mouseX = (e.clientX - window.innerWidth / 2) / 50
+    mouseY = (e.clientY - window.innerHeight / 2) / 50
 
-    asteroid.addEventListener("mouseleave", function () {
-      this.style.animationPlayState = "running"
-    })
+    if (logo) {
+      logo.style.transform = `translate(${mouseX}px, ${mouseY}px)`
+    }
   })
 
-  if (window.innerWidth > 768) {
-    document.addEventListener("mousemove", (e) => {
-      const mouseX = e.clientX / window.innerWidth
-      const mouseY = e.clientY / window.innerHeight
-
-      const saturn = document.querySelector(".saturn")
-      const moon = document.querySelector(".moon")
-
-      if (saturn && moon) {
-        saturn.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`
-        moon.style.transform = `translate(${mouseX * -15}px, ${mouseY * -15}px)`
-      }
-    })
-  }
-
-  let touchStartY = 0
-  document.addEventListener("touchstart", (e) => {
-    touchStartY = e.touches[0].clientY
-  })
-
+  // Touch interaction for mobile
   document.addEventListener("touchmove", (e) => {
-    if (window.innerWidth <= 768) {
-      const touchY = e.touches[0].clientY
-      const deltaY = (touchY - touchStartY) / window.innerHeight
+    if (e.touches.length > 0) {
+      const touch = e.touches[0]
+      mouseX = (touch.clientX - window.innerWidth / 2) / 30
+      mouseY = (touch.clientY - window.innerHeight / 2) / 30
 
-      const saturn = document.querySelector(".saturn")
-      const moon = document.querySelector(".moon")
-
-      if (saturn && moon) {
-        saturn.style.transform = `translateY(${deltaY * 10}px)`
-        moon.style.transform = `translateY(${deltaY * -8}px)`
+      if (logo) {
+        logo.style.transform = `translate(${mouseX}px, ${mouseY}px)`
       }
+    }
+  })
+
+  // Reset position when mouse leaves
+  document.addEventListener("mouseleave", () => {
+    if (logo) {
+      logo.style.transform = "translate(0px, 0px)"
     }
   })
 })
