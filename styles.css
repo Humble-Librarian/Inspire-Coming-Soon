@@ -44,10 +44,10 @@ body::before {
 .logo {
   max-width: 600px;
   width: 90vw;
-  height: auto;
+  height: 500px;
   filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.8));
   animation: float 6s ease-in-out infinite;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .coming-soon {
@@ -58,6 +58,11 @@ body::before {
   text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.6), 0 0 30px rgba(138, 43, 226, 0.4);
   letter-spacing: 8px;
   animation: glow 2s ease-in-out infinite alternate;
+}
+
+h1{
+  margin-bottom: 150px;
+  margin-left: 50px;
 }
 
 @keyframes float {
@@ -87,8 +92,12 @@ body::before {
   }
 
   .coming-soon {
-    font-size: 2rem;
+    font-size: 3rem;
     letter-spacing: 4px;
+  }
+
+  h1{
+    margin: 0px;
   }
 }
 
@@ -102,4 +111,9 @@ body::before {
     font-size: 1.5rem;
     letter-spacing: 2px;
   }
+  h1{
+    margin: 0px;
+  }
 }
+
+
