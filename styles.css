@@ -87,7 +87,8 @@ h1{
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .logo {
-    max-width: 450px;
+    max-width: 500px;
+    
     margin-bottom: 30px;
   }
 
@@ -101,9 +102,10 @@ h1{
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .logo {
-    max-width: 350px;
+    max-width: 500px;
+    
     margin-bottom: 25px;
   }
 
