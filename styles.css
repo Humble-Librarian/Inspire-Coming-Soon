@@ -1,0 +1,473 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  /* Allow vertical scrolling on mobile */
+  overflow-y: auto;
+}
+
+.container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  /* Ensure background stays fixed on mobile */
+  background-attachment: fixed;
+}
+
+/* New main content container for better mobile layout */
+.main-content {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.floating-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Mobile-first responsive design for Saturn */
+.saturn {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  width: 6rem;
+  opacity: 0.7;
+  animation: drift 8s ease-in-out infinite;
+}
+
+/* Mobile-first responsive design for Moon */
+.moon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  width: 4rem;
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
+}
+
+.asteroid {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d1d5db, #6b7280);
+  z-index: 15;
+}
+
+/* Reduced asteroid sizes and repositioned for mobile */
+.asteroid-1 {
+  top: 15%;
+  left: 70%;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.8;
+  animation: float 7s ease-in-out infinite;
+  transform: rotate(45deg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset -4px -4px 8px rgba(0, 0, 0, 0.4), inset 4px 4px 8px
+    rgba(255, 255, 255, 0.3);
+}
+
+.asteroid-2 {
+  top: 25%;
+  right: 10%;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.7;
+  animation: drift 9s ease-in-out infinite;
+  transform: rotate(-45deg);
+  background: linear-gradient(135deg, #9ca3af, #4b5563);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(0, 0, 0, 0.4), inset 3px 3px 6px
+    rgba(255, 255, 255, 0.25);
+}
+
+.asteroid-3 {
+  bottom: 20%;
+  left: 15%;
+  width: 1.8rem;
+  height: 1.8rem;
+  opacity: 0.8;
+  animation: glow 5s ease-in-out infinite;
+  transform: rotate(12deg);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), inset -3px -3px 6px rgba(0, 0, 0, 0.4), inset 3px 3px 6px
+    rgba(255, 255, 255, 0.3);
+}
+
+.asteroid-4 {
+  bottom: 15%;
+  right: 20%;
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
+  transform: rotate(-30deg);
+  background: linear-gradient(135deg, #9ca3af, #4b5563);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset -2px -2px 4px rgba(0, 0, 0, 0.4), inset 2px 2px 4px
+    rgba(255, 255, 255, 0.2);
+}
+
+.asteroid-5 {
+  top: 40%;
+  right: 5%;
+  width: 2.2rem;
+  height: 2.2rem;
+  opacity: 0.8;
+  animation: drift 10s ease-in-out infinite;
+  transform: rotate(60deg);
+  background: linear-gradient(135deg, #e5e7eb, #6b7280);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7), inset -4px -4px 8px rgba(0, 0, 0, 0.4), inset 4px 4px 8px
+    rgba(255, 255, 255, 0.35);
+}
+
+.asteroid-6 {
+  top: 60%;
+  left: 5%;
+  width: 1.6rem;
+  height: 1.6rem;
+  opacity: 0.7;
+  animation: glow 8s ease-in-out infinite;
+  transform: rotate(-15deg);
+  background: linear-gradient(135deg, #d1d5db, #4b5563);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6), inset -3px -3px 6px rgba(0, 0, 0, 0.4), inset 3px 3px 6px
+    rgba(255, 255, 255, 0.25);
+}
+
+/* Restructured title container for mobile-first design */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  order: 2;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Mobile-first logo sizing */
+.main-logo {
+  max-width: 350px;
+  width: 90%;
+  height: auto;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Repositioned astronaut for mobile layout */
+.astronaut-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  order: 1;
+}
+
+.astronaut {
+  width: 8rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Mobile-first coming soon text */
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Increased margin from 0.5rem to 2rem for more space between logo and text */
+  margin-top: 2rem;
+  order: 3;
+  width: 100%;
+}
+
+.coming-soon-text {
+  /* Increased font size from 1.2rem to 1.8rem on mobile */
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.1em;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+  animation: float 8s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  font-family: "Orbitron", "Exo 2", "Rajdhani", sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #ffffff, #e0e7ff, #c7d2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  width: 100%;
+  display: block;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  25% {
+    transform: translateX(10px) translateY(-15px);
+  }
+  50% {
+    transform: translateX(-5px) translateY(-10px);
+  }
+  75% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset -4px -4px 8px rgba(0, 0, 0, 0.4), inset 4px 4px 8px
+      rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset -6px -6px 12px rgba(0, 0, 0, 0.5), inset 6px 6px 12px
+      rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Tablet responsive design */
+@media (min-width: 768px) {
+  .main-content {
+    padding: 2rem;
+  }
+
+  .saturn {
+    width: 8rem;
+    left: 2rem;
+    top: 3rem;
+  }
+
+  .moon {
+    width: 6rem;
+    right: 2rem;
+    top: 2rem;
+  }
+
+  .main-logo {
+    max-width: 500px;
+  }
+
+  .astronaut {
+    width: 10rem;
+  }
+
+  .coming-soon-text {
+    font-size: 2.2rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* Added more spacing for tablet screens */
+  .coming-soon-container {
+    margin-top: 2.5rem;
+  }
+
+  .asteroid-1 {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .asteroid-2 {
+    width: 2rem;
+    height: 2rem;
+  }
+  .asteroid-3 {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+  .asteroid-4 {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .asteroid-5 {
+    width: 3rem;
+    height: 3rem;
+  }
+  .asteroid-6 {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+/* Desktop responsive design */
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
+
+  .main-content {
+    position: absolute;
+    inset: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem;
+  }
+
+  .astronaut-container {
+    position: absolute;
+    left: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    order: initial;
+    margin: 0;
+  }
+
+  .title-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    order: initial;
+  }
+
+  .logo-section {
+    transform: translateY(-2rem);
+  }
+
+  .coming-soon-container {
+    position: absolute;
+    /* Adjusted bottom position to maintain more space from logo on desktop */
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    order: initial;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .saturn {
+    width: 12rem;
+    left: 2rem;
+    top: 4rem;
+    opacity: 0.9;
+  }
+
+  .moon {
+    width: 8rem;
+    right: 4rem;
+    top: 3rem;
+    opacity: 0.85;
+  }
+
+  .main-logo {
+    max-width: 750px;
+  }
+
+  .astronaut {
+    width: 12rem;
+  }
+
+  .coming-soon-text {
+    font-size: 2.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  .asteroid-1 {
+    width: 4rem;
+    height: 4rem;
+    top: 8rem;
+    left: 50%;
+  }
+  .asteroid-2 {
+    width: 3rem;
+    height: 3rem;
+    top: 18rem;
+    right: 5rem;
+  }
+  .asteroid-3 {
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 10rem;
+    left: 50%;
+  }
+  .asteroid-4 {
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 8rem;
+    left: 75%;
+  }
+  .asteroid-5 {
+    width: 4.5rem;
+    height: 4.5rem;
+    top: 50%;
+    right: 25%;
+  }
+  .asteroid-6 {
+    width: 3.25rem;
+    height: 3.25rem;
+    top: 75%;
+    left: 33%;
+  }
+}
+
+/* Large desktop responsive design */
+@media (min-width: 1280px) {
+  .main-logo {
+    max-width: 900px;
+  }
+
+  .astronaut {
+    width: 16rem;
+  }
+
+  .coming-soon-container {
+    /* Further adjusted bottom position for larger screens */
+    bottom: 30%;
+  }
+
+  .coming-soon-text {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .main-logo {
+    max-width: 1100px;
+  }
+
+  .coming-soon-container {
+    /* Final adjustment for extra large screens */
+    bottom: 25%;
+  }
+
+  .coming-soon-text {
+    font-size: 4rem;
+  }
+}
